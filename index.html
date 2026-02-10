@@ -1,691 +1,299 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chahd Morsli — Marketing Digital</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --noir: #1a1a1a;
-            --blanc: #fafafa;
-            --accent: #d4a574;
-            --gris: #666;
-            --gris-clair: #e8e8e8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--blanc);
-            color: var(--noir);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(250, 250, 250, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--gris-clair);
-            animation: slideDown 0.8s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--noir);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 4rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(5deg); }
-        }
-
-        .hero-content {
-            max-width: 900px;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-label {
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--gris);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2.5rem;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            text-decoration: none;
-            border-radius: 2px;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            display: inline-block;
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background: var(--noir);
-            color: var(--blanc);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--noir);
-            color: var(--noir);
-        }
-
-        .btn-secondary:hover {
-            background: var(--noir);
-            color: var(--blanc);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 6rem 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 3rem;
-            letter-spacing: -0.01em;
-        }
-
-        /* Experience */
-        .experience-item {
-            margin-bottom: 3.5rem;
-            padding-left: 2rem;
-            border-left: 2px solid var(--gris-clair);
-            transition: border-color 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .experience-item:nth-child(1) { animation-delay: 0.1s; }
-        .experience-item:nth-child(2) { animation-delay: 0.2s; }
-        .experience-item:nth-child(3) { animation-delay: 0.3s; }
-
-        .experience-item:hover {
-            border-left-color: var(--accent);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-company {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-date {
-            font-size: 0.85rem;
-            color: var(--gris);
-            font-style: italic;
-        }
-
-        .experience-description {
-            color: var(--gris);
-            line-height: 1.8;
-        }
-
-        .experience-description li {
-            margin-bottom: 0.5rem;
-            list-style: none;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .experience-description li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Education */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .education-card {
-            padding: 2rem;
-            border: 1px solid var(--gris-clair);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .education-card:nth-child(1) { animation-delay: 0.1s; }
-        .education-card:nth-child(2) { animation-delay: 0.2s; }
-        .education-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .education-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .education-degree {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-school {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-year {
-            font-size: 0.85rem;
-            color: var(--gris);
-            margin-bottom: 1rem;
-        }
-
-        .education-details {
-            color: var(--gris);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .skill-category:nth-child(1) { animation-delay: 0.1s; }
-        .skill-category:nth-child(2) { animation-delay: 0.2s; }
-        .skill-category:nth-child(3) { animation-delay: 0.3s; }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.6rem 0;
-            color: var(--gris);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .skill-list li:hover {
-            color: var(--accent);
-            padding-left: 0.5rem;
-        }
-
-        /* Contact */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .contact-item:nth-child(1) { animation-delay: 0.1s; }
-        .contact-item:nth-child(2) { animation-delay: 0.2s; }
-        .contact-item:nth-child(3) { animation-delay: 0.3s; }
-        .contact-item:nth-child(4) { animation-delay: 0.4s; }
-
-        .contact-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-value {
-            font-size: 1.1rem;
-        }
-
-        .contact-value a {
-            color: var(--noir);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--noir);
-            color: var(--blanc);
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 6rem 2rem 2rem;
-            }
-
-            h1 {
-                font-size: 3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 4rem 2rem;
-            }
-
-            h2 {
-                font-size: 2.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .experience-header {
-                flex-direction: column;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chahd Morsli — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f5f5f7;
+--text:#1d1d1f;
+--muted:#6e6e73;
+--accent:#c8a96a;
+--glass:rgba(255,255,255,0.55);
+}
+
+@media(prefers-color-scheme:dark){
+:root{
+--bg:#0f0f10;
+--text:#f5f5f7;
+--muted:#9a9a9e;
+--glass:rgba(30,30,32,0.6);
+}
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:1rem 3rem;
+backdrop-filter:blur(20px);
+background:var(--glass);
+border-bottom:1px solid rgba(0,0,0,0.05);
+z-index:1000;
+}
+
+.logo{
+font-family:Playfair Display,serif;
+font-size:1.4rem;
+}
+
+.nav-links{
+display:flex;
+gap:2rem;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:var(--text);
+opacity:.7;
+transition:.3s;
+}
+
+.nav-links a:hover{opacity:1}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:8rem 3rem 3rem;
+}
+
+.hero-content{max-width:800px}
+
+.hero-label{
+letter-spacing:.2em;
+text-transform:uppercase;
+font-size:.7rem;
+color:var(--accent);
+margin-bottom:1rem;
+}
+
+h1{
+font-family:Playfair Display,serif;
+font-size:5rem;
+font-weight:400;
+line-height:1.05;
+margin-bottom:1rem;
+}
+
+.hero-subtitle{
+font-size:1.2rem;
+color:var(--muted);
+max-width:600px;
+}
+
+.cta{margin-top:2rem;display:flex;gap:1rem}
+
+.btn{
+padding:1rem 2rem;
+border-radius:50px;
+text-decoration:none;
+font-size:.85rem;
+transition:.4s cubic-bezier(.16,1,.3,1);
+position:relative;
+overflow:hidden;
+}
+
+.btn-primary{
+background:black;
+color:white;
+}
+
+.btn-outline{
+border:1px solid rgba(0,0,0,0.2);
+color:var(--text);
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.02);
+}
+
+/* SECTIONS */
+
+section{
+max-width:1100px;
+margin:auto;
+padding:5rem 2rem;
+}
+
+h2{
+font-family:Playfair Display,serif;
+font-size:2.8rem;
+margin-bottom:2rem;
+}
+
+/* GLASS CARDS */
+
+.card{
+background:var(--glass);
+backdrop-filter:blur(20px);
+padding:2rem;
+border-radius:24px;
+border:1px solid rgba(0,0,0,0.05);
+margin-bottom:1.5rem;
+transition:.5s cubic-bezier(.16,1,.3,1);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:1.5rem;
+}
+
+/* ANIMATION REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:3rem;
+color:var(--muted);
+}
+
+</style>
 </head>
+
 <body>
-    <nav>
-        <div class="logo">CM</div>
-        <ul class="nav-links">
-            <li><a href="#profil">Profil</a></li>
-            <li><a href="#experience">Expérience</a></li>
-            <li><a href="#formation">Formation</a></li>
-            <li><a href="#competences">Compétences</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <section class="hero" id="profil">
-        <div class="hero-content">
-            <div class="hero-label">Marketing Digital Specialist</div>
-            <h1>Chahd<br>Morsli</h1>
-            <p class="hero-subtitle">
-                Étudiante en Master Marketing Digital, spécialisée en stratégie digitale, 
-                SEO et visibilité en ligne avec une expérience en environnement corporate international.
-            </p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Me Contacter</a>
-                <a href="https://www.linkedin.com/in/chahd-morsli" target="_blank" class="btn btn-secondary">LinkedIn</a>
-            </div>
-        </div>
-    </section>
+<nav>
+<div class="logo">CM</div>
+<ul class="nav-links">
+<li><a href="#profil">Profil</a></li>
+<li><a href="#experience">Expérience</a></li>
+<li><a href="#competences">Compétences</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <section id="experience">
-        <div class="section-label">Parcours Professionnel</div>
-        <h2>Expérience</h2>
-        
-        <div class="experience-item">
-            <div class="experience-header">
-                <div>
-                    <div class="experience-title">Stagiaire Marketing Digital</div>
-                    <div class="experience-company">Sanlam Maroc – Groupe international d'assurance</div>
-                    <div class="experience-date">Avril 2025 – Juin 2025 | Casablanca, Maroc</div>
-                </div>
-            </div>
-            <ul class="experience-description">
-                <li>Gestion et mise à jour du site web corporate via Django, améliorant la qualité des contenus et la visibilité en ligne</li>
-                <li>Réalisation d'analyses concurrentielles et suivi de la performance digitale</li>
-                <li>Optimisation de la présence digitale locale via Evermaps et Google Business</li>
-                <li>Gestion et mise à jour des fiches agences sur Google et Facebook</li>
-            </ul>
-        </div>
-    </section>
+<section class="hero" id="profil">
+<div class="hero-content reveal">
+<div class="hero-label">Digital Marketing Specialist</div>
+<h1>Chahd Morsli</h1>
+<p class="hero-subtitle">
+Master Marketing Digital — SEO, stratégie digitale et visibilité en ligne avec expérience corporate internationale.
+</p>
 
-    <section id="formation">
-        <div class="section-label">Parcours Académique</div>
-        <h2>Formation</h2>
-        
-        <div class="education-grid">
-            <div class="education-card">
-                <div class="education-degree">Master Marketing Digital</div>
-                <div class="education-school">Al Akhawayn University</div>
-                <div class="education-year">2025 – 2027 | Ifrane, Maroc</div>
-                <div class="education-details">
-                    Marketing digital, branding et communication • Réseaux sociaux et marketing de contenu • 
-                    Stratégies marketing orientées données et performance
-                </div>
-            </div>
+<div class="cta">
+<a class="btn btn-primary magnet" href="#contact">Me contacter</a>
+<a class="btn btn-outline magnet" target="_blank" href="https://www.linkedin.com/in/chahd-morsli">LinkedIn</a>
+</div>
+</div>
+</section>
 
-            <div class="education-card">
-                <div class="education-degree">Bachelor en Administration des Affaires Internationales</div>
-                <div class="education-school">ESCA École de Management</div>
-                <div class="education-year">2025 | Casablanca, Maroc</div>
-                <div class="education-details">
-                    Spécialisation : Marketing & Business International
-                </div>
-            </div>
+<section id="experience">
+<h2 class="reveal">Expérience</h2>
 
-            <div class="education-card">
-                <div class="education-degree">Études de premier cycle</div>
-                <div class="education-school">KEDGE Business School</div>
-                <div class="education-year">2021 – 2024 | France</div>
-                <div class="education-details">
-                    Trois années complétées avant transfert vers l'ESCA • Bourse d'excellence (75%) 
-                    et excellents résultats académiques
-                </div>
-            </div>
-        </div>
+<div class="card reveal">
+<h3>Stagiaire Marketing Digital — Sanlam Maroc</h3>
+<p>Gestion site Django • SEO • analyse concurrentielle • optimisation Google Business</p>
+</div>
+</section>
 
-        <h2 style="margin-top: 4rem;">Expériences Internationales</h2>
-        <div class="education-grid">
-            <div class="education-card">
-                <div class="education-degree">Échange d'été</div>
-                <div class="education-school">TBS Education</div>
-                <div class="education-year">Été 2024 | Barcelone, Espagne</div>
-                <div class="education-details">Marketing & Stratégie d'Entreprise</div>
-            </div>
+<section id="competences">
+<h2 class="reveal">Compétences</h2>
 
-            <div class="education-card">
-                <div class="education-degree">Programme Virtuel</div>
-                <div class="education-school">Hanyang University</div>
-                <div class="education-year">Printemps 2025 | Séoul, Corée du Sud</div>
-                <div class="education-details">Marketing & Économie</div>
-            </div>
-        </div>
-    </section>
+<div class="grid">
 
-    <section id="competences">
-        <div class="section-label">Expertise</div>
-        <h2>Compétences</h2>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Marketing Digital</h3>
-                <ul class="skill-list">
-                    <li>SEO et visibilité en ligne</li>
-                    <li>Analyse concurrentielle</li>
-                    <li>Communication digitale</li>
-                    <li>Gestion des réseaux sociaux</li>
-                    <li>Brand positioning</li>
-                </ul>
-            </div>
+<div class="card reveal">
+<h3>Marketing Digital</h3>
+<p>SEO • Social Media • Brand Strategy</p>
+</div>
 
-            <div class="skill-category">
-                <h3>Langues</h3>
-                <ul class="skill-list">
-                    <li>Français (courant)</li>
-                    <li>Anglais (courant)</li>
-                    <li>Arabe (langue maternelle)</li>
-                </ul>
-            </div>
+<div class="card reveal">
+<h3>Langues</h3>
+<p>Français • Anglais • Arabe</p>
+</div>
 
-            <div class="skill-category">
-                <h3>Certifications</h3>
-                <ul class="skill-list">
-                    <li>Marketing Digital – Pratique.io</li>
-                    <li>Sales Enablement – Coursera</li>
-                    <li>Sales Training – Coursera</li>
-                    <li>Strategic Management – Coursera</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<div class="card reveal">
+<h3>Certifications</h3>
+<p>Coursera • Strategic Management • Sales Enablement</p>
+</div>
 
-    <section id="contact">
-        <div class="section-label">Restons en Contact</div>
-        <h2>Contact</h2>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-label">Localisation</div>
-                <div class="contact-value">Talence, France</div>
-            </div>
+</div>
+</section>
 
-            <div class="contact-item">
-                <div class="contact-label">Téléphone</div>
-                <div class="contact-value">
-                    <a href="tel:+33685484511">+33 6 85 48 45 11</a>
-                </div>
-            </div>
+<section id="contact">
+<h2 class="reveal">Contact</h2>
 
-            <div class="contact-item">
-                <div class="contact-label">Email</div>
-                <div class="contact-value">
-                    <a href="mailto:chahdmorsli2003@gmail.com">chahdmorsli2003@gmail.com</a>
-                </div>
-            </div>
+<div class="card reveal">
+<p>Email : chahdmorsli2003@gmail.com</p>
+<p>Téléphone : +33 6 85 48 45 11</p>
+</div>
+</section>
 
-            <div class="contact-item">
-                <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">
-                    <a href="https://www.linkedin.com/in/chahd-morsli" target="_blank">Chahd Morsli</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+© 2026 Chahd Morsli
+</footer>
 
-    <footer>
-        <p>&copy; 2026 Chahd Morsli. Tous droits réservés.</p>
-    </footer>
+<script>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+/* SCROLL REVEAL PREMIUM */
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+},{threshold:.15});
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+/* MAGNETIC BUTTON EFFECT (DESIGNER STYLE) */
+
+document.querySelectorAll('.magnet').forEach(btn=>{
+btn.addEventListener('mousemove',e=>{
+const rect=btn.getBoundingClientRect();
+const x=e.clientX-rect.left-rect.width/2;
+const y=e.clientY-rect.top-rect.height/2;
+btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
+});
+btn.addEventListener('mouseleave',()=>{
+btn.style.transform='translate(0,0)';
+});
+});
+
+</script>
+
 </body>
 </html>
